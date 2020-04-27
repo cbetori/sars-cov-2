@@ -1,1 +1,1 @@
-web: bin/server
+web: bin/sars-cov-2
