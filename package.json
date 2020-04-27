@@ -1,0 +1,11 @@
+{
+	"scripts": {
+		"client": "cd client/src && npm start",
+		"server": "cd vendor && fresh",
+		"dev": "concurrently - kill-others \"npm run server \" \"npm run client\"",
+		"build-client": "cd client && npm run build",
+		"build-server": "cd vendor && go build server.go",
+		"move-server": "mv vendor/server bin/server",
+		"dev-build": "concurrently - kill-others \"npm run build-server \" \"npm run build-client\""
+	}
+}
