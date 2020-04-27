@@ -6,7 +6,6 @@ import (
 	"net/http"
 
 	_ "github.com/joho/godotenv/autoload"
-	_ "github.com/lib/pq"
 )
 
 func Start(r *http.Request) string {
