@@ -6,9 +6,9 @@ import State from './State'
 import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
-	<React.StrictMode>
+	<React.Fragment>
 		<State />
-	</React.StrictMode>,
+	</React.Fragment>,
 	document.getElementById('root')
 )
 

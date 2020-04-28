@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { initialCountryList } from './countries'
-import moment from 'moment'
 import App from './App'
+import dayjs from 'dayjs'
 
 const State = () => {
-	let y = moment().subtract(1, 'days').format('YYYY-MM-DD')
+	//API with information from previous day. The newest information always exists for yesterday.
+	let y = dayjs().subtract(1, 'days').format('YYYY-MM-DD')
 
 	const [dateValue, dateValueSet] = useState(y)
 	const dataDefault = '/api/default'
 	const dataCustomeDate = '/api/default/data=' + dateValue
 
-	const [countryList, countryListSet] = useState(initialCountryList)
+	const [countryList, countryListSet] = useState([])
 	const [stateList, stateListSet] = useState([])
 
 	const [countryValue, countryValueSet] = useState()
@@ -20,7 +20,9 @@ const State = () => {
 	const [totalsData, totalsDataSet] = useState({})
 	const [totals, totalsSet] = useState({})
 
-	function compare(a, b) {
+	//Use to order an array of objects, in this case its by state/province value
+	//Updates stateList
+	let compare = (a, b) => {
 		let aState = a.province
 		let bState = b.province
 		let comparison = 0
@@ -32,6 +34,7 @@ const State = () => {
 		return comparison
 	}
 
+	//Creates an array that holds unique values of both province and country
 	let handleProvinceList = (d) => {
 		try {
 			let result = d.map((e) => {
@@ -46,28 +49,30 @@ const State = () => {
 		} catch {}
 	}
 
+	//Looks at localstorage. On error it does a fetch for the most current data
+	//If localstoage has values and if dateValue === localStorage date then localStorage information is used
+	//This fires only when the dateValue changes
 	let defaultData = () => {
 		let local = localStorage.getItem('storage')
 		local = JSON.parse(local)
 		try {
 			if (local.data[0].date === dateValue) {
-				console.log('Local values used for query')
 				handleLocalData(local)
 			} else {
 				if (dateValue === y) {
-					console.log('Default data query fired')
 					handleFetch(dataDefault)
 				} else {
-					console.log('Custome data query fired')
 					handleFetch(dataCustomeDate)
 				}
 			}
 		} catch {
-			console.log('Error caught: Default data query fired')
 			handleFetch(dataDefault)
 		}
 	}
 
+	//Handles actual fetch request. If they date = yesterday it will pull the newest possible information.
+	//If dataValue !== yesterday than custome fetch by date is performed.
+	//Data is stored in localStorage to speed up load for repeat vistors.
 	let handleFetch = (url) => {
 		fetch(url, {
 			method: 'GET',
@@ -76,12 +81,10 @@ const State = () => {
 				return response.json()
 			})
 			.then((data) => {
-				console.log(data)
 				if (data.data.data !== null) {
 					let c = data.countries
 					let p = handleProvinceList(data.data.data)
-					handleTotals(data.totals)
-
+					handleTotals(data.totals, countryValue, stateValue)
 					countryListSet(c)
 					stateListSet(p)
 					totalsDataSet(data.totals)
@@ -99,18 +102,16 @@ const State = () => {
 			})
 	}
 
+	//Add all fetch request data to local storage.
 	let handleLocalData = (local) => {
-		console.log(local)
 		countryListSet(local.country)
 		stateListSet(local.province)
 		totalsDataSet(local.totalData)
-		handleTotals(local.totalData)
+		handleTotals(local.totalData, countryValue, stateValue)
 		tableDataSet(local.data)
 	}
 
-	//d is tableData
-	//Key can be "province" or "country"
-	//Filter is either stateValue or countryValue
+	//Handles all total values. Fired when dateValue, stateValue, or countryVaue changes
 	let handleTotals = (d, c, s) => {
 		try {
 			let confirmed = 0
@@ -139,6 +140,7 @@ const State = () => {
 		} catch {}
 	}
 
+	//Holds makeshift state and can be used to pass down to children
 	const state = {
 		options: {
 			countryValue: countryValue,

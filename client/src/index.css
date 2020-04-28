@@ -23,7 +23,7 @@ code {
 	width: 100%;
 	background-color: rgb(250, 222, 60, 0.9);
 	font-weight: 600;
-	font-size: 1vmin;
+	font-size: 1.5vmin;
 }
 
 #disclaimer-detail {
@@ -44,6 +44,8 @@ code {
 
 .disclaimer-links-address {
 	margin-left: 5px;
+	color: inherit;
+	text-decoration: underline;
 }
 
 #options {

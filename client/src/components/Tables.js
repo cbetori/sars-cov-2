@@ -1,20 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Column, Table, AutoSizer, InfiniteLoader } from 'react-virtualized'
-import { Card } from 'antd'
+import { Column, Table } from 'react-virtualized'
 
 const Tables = (props) => {
-	//Props being received:
-	//tableData
-	//countryValue
-	//stateValue
-	/////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Completed: Detail tables
-	//In progress: Summary table
-	//1. One "Summary" table (ex. If country chosen one table to total at highest level then tables for each state)
-
-	/////////////////////////////////////////////////////////////////////////////////////////////////////
-	const [tableWidth, tableWidthSet] = useState(window.innerWidth * 0.75)
 	const [tableArray, tableArraySet] = useState([])
+	const [tableWidth, tableWidthSet] = useState(window.innerWidth * 0.75)
+
+	//Used to order table data by confirmations of cases
 	function compare(a, b) {
 		let aState = a.confirmed
 		let bState = b.confirmed
@@ -26,6 +17,7 @@ const Tables = (props) => {
 		}
 		return comparison
 	}
+
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Create proper array
 	//IF STATE AND PROVINENCE ARE CHOSEN
@@ -33,7 +25,6 @@ const Tables = (props) => {
 		let newArray = []
 		for (let i = 0; i < props.state.tableData.length; i++) {
 			let tempArray = []
-			let result
 			if (
 				props.state.tableData[i].country === props.state.countryValue &&
 				props.state.tableData[i].province === props.state.stateValue
@@ -114,6 +105,7 @@ const Tables = (props) => {
 		}
 	}
 
+	//Cleans up numbers in table to add commas
 	const formatNumber = (num) => {
 		try {
 			return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
@@ -122,6 +114,7 @@ const Tables = (props) => {
 		}
 	}
 
+	//The tables have different columns based on what filters are picked.
 	const tableDivCountry = (array, key) => {
 		let rowHeight = 30
 		let tblHeight
@@ -137,8 +130,6 @@ const Tables = (props) => {
 		try {
 			return (
 				<div key={key} className='tables-individual'>
-					{/* <InfiniteLoader {...InfiniteLoader}>
-						{({ onRowsRendered, registerChild }) => ( */}
 					<Table
 						className='tables-virtualized'
 						width={tableWidth}
@@ -148,8 +139,6 @@ const Tables = (props) => {
 						rowHeight={rowHeight}
 						rowCount={array.length}
 						rowGetter={({ index }) => array[index]}
-						// onRowsRendered={onRowsRendered}
-						// ref={registerChild}
 					>
 						<Column width={tableWidth / 5} label='Country' dataKey='country' />
 						<Column
@@ -182,8 +171,6 @@ const Tables = (props) => {
 							}
 						/>
 					</Table>
-					{/* )} */}
-					{/* </InfiniteLoader> */}
 				</div>
 			)
 		} catch {}
@@ -204,8 +191,6 @@ const Tables = (props) => {
 		try {
 			return (
 				<div key={key} className='tables-individual'>
-					{/* <InfiniteLoader {...InfiniteLoader}>
-						{({ onRowsRendered, registerChild }) => ( */}
 					<Table
 						className='tables-virtualized'
 						width={tableWidth}
@@ -215,8 +200,6 @@ const Tables = (props) => {
 						rowHeight={rowHeight}
 						rowCount={array.length}
 						rowGetter={({ index }) => array[index]}
-						// onRowsRendered={onRowsRendered}
-						// ref={registerChild}
 					>
 						<Column
 							width={tableWidth / 5}
@@ -241,8 +224,6 @@ const Tables = (props) => {
 							}
 						/>
 					</Table>
-					{/* )}
-					</InfiniteLoader> */}
 				</div>
 			)
 		} catch {}
@@ -264,8 +245,6 @@ const Tables = (props) => {
 		try {
 			return (
 				<div key={key} className='tables-individual'>
-					{/* <InfiniteLoader {...InfiniteLoader}>
-						{({ onRowsRendered, registerChild }) => ( */}
 					<Table
 						className='tables-virtualized'
 						width={tableWidth}
@@ -275,8 +254,6 @@ const Tables = (props) => {
 						rowHeight={rowHeight}
 						rowCount={array.length}
 						rowGetter={({ index }) => array[index]}
-						// onRowsRendered={onRowsRendered}
-						// ref={registerChild}
 					>
 						<Column width={tableWidth / 4} label='County' dataKey='name' />
 						<Column
@@ -296,8 +273,6 @@ const Tables = (props) => {
 							}
 						/>
 					</Table>
-					{/* // 	)}
-					// </InfiniteLoader> */}
 				</div>
 			)
 		} catch {}

@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
-import { DatePicker, Select, Switch } from 'antd'
-import moment from 'moment'
+import Select from 'antd/es/select'
+import Switch from 'antd/es/switch'
+import dayjs from 'dayjs'
+import DatePicker from './DatePicker'
 
 const Options = (props) => {
-	//Props being received:
-	//countryValue
-	//stateValue
-	//dateValue
 	const defaultProvinceValue = 'Select a state/province'
 	const [provinceText, provinceTextSet] = useState(defaultProvinceValue)
 	const defaultCountryValue = 'Select a Country'
 	const [countryText, countryTextSet] = useState(defaultCountryValue)
 
+	//Used to handle theme. Simply changes href of link component in index.html
+	//There should be a better way of handle apart from fully reloading css
 	let changeTheme = () => {
 		let curValue = document.getElementById('theme').href
 		curValue = curValue.split('/')[3]
@@ -34,8 +34,7 @@ const Options = (props) => {
 		}
 	}
 
-	function onSearch(val) {}
-
+	function onSearch() {}
 	let countries = props.state.countryList.map((e, i) => {
 		return (
 			<Select.Option key={i} value={e}>
@@ -57,7 +56,7 @@ const Options = (props) => {
 	})
 
 	let handleDateChange = (e, s) => {
-		let y = moment(s).format('YYYY-MM-DD')
+		let y = dayjs(s).format('YYYY-MM-DD')
 		props.state.dateValueSet(y)
 	}
 
@@ -92,7 +91,9 @@ const Options = (props) => {
 				Light/Dark
 			</div>
 			<DatePicker
-				defaultValue={moment(props.state.dateValue, 'YYYY-MM-DD')}
+				theme='dark'
+				picker='date'
+				defaultValue={dayjs(props.state.dateValue, 'YYYY-MM-DD')}
 				onChange={(e, s) => handleDateChange(e, s)}
 				format={'YYYY-MM-DD'}
 				className='options-inputs'
