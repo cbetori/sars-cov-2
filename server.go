@@ -28,7 +28,7 @@ func main() {
 
 	r.HandleFunc("/api/default/data={date}", controller.HandleDefaultQuery).Methods("GET")
 
-	spa := spaHandler{staticPath: "../client/dist", indexPath: "index.html"}
+	spa := spaHandler{staticPath: "client/dist", indexPath: "index.html"}
 	r.PathPrefix("/").Handler(spa)
 
 	controller.HandleTimedData()
