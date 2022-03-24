@@ -4,13 +4,15 @@ import dayjs from 'dayjs'
 import './index.css'
 import 'react-virtualized/styles.css'
 
+console.log(API_URL)
+
 const State = () => {
   //API with information from previous day. The newest information always exists for yesterday.
   let y = dayjs().subtract(1, 'days').format('YYYY-MM-DD')
 
   const [dateValue, dateValueSet] = useState(y)
-  const dataDefault = '/api/default'
-  const dataCustomeDate = '/api/default/data=' + dateValue
+  const dataDefault = API_URL + '/api/default'
+  const dataCustomeDate = API_URL + '/api/default/data=' + dateValue
 
   const [countryList, countryListSet] = useState([])
   const [stateList, stateListSet] = useState([])

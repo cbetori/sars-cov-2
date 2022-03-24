@@ -1,9 +1,10 @@
 const { ModuleFederationPlugin } = require('webpack').container
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const path = require('path')
+const web = require('webpack')
 const deps = require('./package.json').dependencies
 
-const mode = process.env.NODE_ENV || 'production'
+const mode = process.env.NODE_ENV || 'development'
 const prod = mode === 'production'
 
 module.exports = {
@@ -14,9 +15,7 @@ module.exports = {
     path: __dirname + '/dist',
     filename: '[name].js',
     chunkFilename: '[name].[id].js',
-    publicPath: prod
-      ? 'https://sars-cov-2-cb.herokuapp.com/'
-      : 'http://localhost:3002/',
+    publicPath: prod ? 'https://sars-cov-2-cb.herokuapp.com/' : '/',
   },
   resolve: {
     extensions: ['.js', '.tsx', '.json', '.css'],
@@ -88,6 +87,9 @@ module.exports = {
     }),
     new HtmlWebPackPlugin({
       template: './public/index.html',
+    }),
+    new web.DefinePlugin({
+      API_URL: JSON.stringify('https://sars-cov-2-cb.herokuapp.com/api'),
     }),
   ],
 }
