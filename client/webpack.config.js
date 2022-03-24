@@ -3,10 +3,14 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const web = require('webpack')
 const deps = require('./package.json').dependencies
+const dotenv = require('dotenv').config({
+  path: '../.env',
+}).parsed
 
 const mode = process.env.NODE_ENV || 'production'
 const prod = mode === 'production'
 
+console.log(dotenv)
 module.exports = {
   entry: './src/index.js',
   mode: 'development',
@@ -66,12 +70,6 @@ module.exports = {
     proxy: {
       '/api': 'http://localhost:3002',
     },
-    headers: {
-      'Access-Control-Allow-Origin': 'https://portfolio-host-nu.vercel.app/',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-      'Access-Control-Allow-Headers':
-        'X-Requested-With, content-type, Authorization',
-    },
   },
   plugins: [
     new ModuleFederationPlugin({
@@ -95,7 +93,7 @@ module.exports = {
       template: './public/index.html',
     }),
     new web.DefinePlugin({
-      API_URL: JSON.stringify('https://sars-cov-2-cb.herokuapp.com'),
+      API_URL: JSON.stringify(dotenv.API_URL),
     }),
   ],
 }

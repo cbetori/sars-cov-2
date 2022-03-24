@@ -22,8 +22,9 @@ func main() {
 
 	// Set port/company name from env file
 	port := os.Getenv("PORT")
+	HOST_ORIGIN := os.Getenv("HOST_ORIGIN")
 	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With"})
-	originsOk := handlers.AllowedOrigins([]string{"https://portfolio-host-nu.vercel.app/"})
+	originsOk := handlers.AllowedOrigins([]string{HOST_ORIGIN})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
 	r.HandleFunc("/api/start", controller.Start).Methods("GET")
 
@@ -39,7 +40,7 @@ func main() {
 
 	//Start Server and Listen
 	fmt.Println("Server Running!")
-	fmt.Println(port)
+	fmt.Println(API_URL)
 	log.Fatal(http.ListenAndServe(":"+port, handlers.CORS(originsOk, headersOk, methodsOk)(r)))
 
 }

@@ -4,8 +4,6 @@ import dayjs from 'dayjs'
 import './index.css'
 import 'react-virtualized/styles.css'
 
-console.log(API_URL)
-
 const State = () => {
   //API with information from previous day. The newest information always exists for yesterday.
   let y = dayjs().subtract(1, 'days').format('YYYY-MM-DD')
@@ -101,7 +99,6 @@ const State = () => {
             data: data.data.data,
           }
           localStorage.setItem('storage', JSON.stringify(storage))
-          console.log(data)
           return data
         }
       })
