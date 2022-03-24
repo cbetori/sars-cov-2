@@ -40,7 +40,6 @@ func main() {
 
 	//Start Server and Listen
 	fmt.Println("Server Running!")
-	fmt.Println(API_URL)
 	log.Fatal(http.ListenAndServe(":"+port, handlers.CORS(originsOk, headersOk, methodsOk)(r)))
 
 }

@@ -10,7 +10,6 @@ const dotenv = require('dotenv').config({
 const mode = process.env.NODE_ENV || 'production'
 const prod = mode === 'production'
 
-console.log(dotenv)
 module.exports = {
   entry: './src/index.js',
   mode: 'development',
@@ -67,9 +66,6 @@ module.exports = {
   },
   devServer: {
     port: 3003,
-    proxy: {
-      '/api': 'http://localhost:3002',
-    },
   },
   plugins: [
     new ModuleFederationPlugin({
