@@ -1,37 +1,35 @@
 {
-	"comment": "",
-	"heroku": {
-		"goVersion": "go1.13.1",
-		"install": [
-			"./..."
-		]
-	},
-	"ignore": "",
-	"package": [
-		{
-			"checksumSHA1": "yRed9lTIEpuLSSZQVJzFX8Lba+o=",
-			"path": "github.com/gorilla/handlers",
-			"revision": "3e030244b4ba0480763356fc8ca0ade6222e2da0",
-			"revisionTime": "2020-09-12T19:21:07Z"
-		},
-		{
-			"checksumSHA1": "hHOpK73BJjC7dtbfNfKsceSZi9o=",
-			"path": "github.com/gorilla/mux",
-			"revision": "75dcda0896e109a2a22c9315bca3bb21b87b2ba5",
-			"revisionTime": "2020-01-12T19:17:43Z"
-		},
-		{
-			"checksumSHA1": "pJsnM/s8UKX2ZG3+mQGR2dbvaFQ=",
-			"path": "github.com/joho/godotenv",
-			"revision": "d6ee6871f21dd95e76563a90f522ce9fe75443f8",
-			"revisionTime": "2020-03-01T20:46:15Z"
-		},
-		{
-			"checksumSHA1": "UE4lhbPYYWEhqHXQk24OA73m5+8=",
-			"path": "github.com/joho/godotenv/autoload",
-			"revision": "d6ee6871f21dd95e76563a90f522ce9fe75443f8",
-			"revisionTime": "2020-03-01T20:46:15Z"
-		}
-	],
-	"rootPath": "sars-cov-2"
+  "comment": "",
+  "heroku": {
+    "goVersion": "go1.13.1",
+    "install": ["./..."]
+  },
+  "ignore": "test",
+  "package": [
+    {
+      "checksumSHA1": "yRed9lTIEpuLSSZQVJzFX8Lba+o=",
+      "path": "github.com/gorilla/handlers",
+      "revision": "3e030244b4ba0480763356fc8ca0ade6222e2da0",
+      "revisionTime": "2020-09-12T19:21:07Z"
+    },
+    {
+      "checksumSHA1": "hHOpK73BJjC7dtbfNfKsceSZi9o=",
+      "path": "github.com/gorilla/mux",
+      "revision": "75dcda0896e109a2a22c9315bca3bb21b87b2ba5",
+      "revisionTime": "2020-01-12T19:17:43Z"
+    },
+    {
+      "checksumSHA1": "pJsnM/s8UKX2ZG3+mQGR2dbvaFQ=",
+      "path": "github.com/joho/godotenv",
+      "revision": "d6ee6871f21dd95e76563a90f522ce9fe75443f8",
+      "revisionTime": "2020-03-01T20:46:15Z"
+    },
+    {
+      "checksumSHA1": "UE4lhbPYYWEhqHXQk24OA73m5+8=",
+      "path": "github.com/joho/godotenv/autoload",
+      "revision": "d6ee6871f21dd95e76563a90f522ce9fe75443f8",
+      "revisionTime": "2020-03-01T20:46:15Z"
+    }
+  ],
+  "rootPath": "sars-cov-2"
 }
