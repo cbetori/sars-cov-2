@@ -13,7 +13,7 @@ module.exports = {
   devtool: prod ? 'hidden-source-map' : 'inline-source-map',
   output: {
     path: __dirname + '/dist',
-    filename: '[name].js',
+    filename: 'index.js',
     chunkFilename: '[name].[id].js',
     publicPath: prod ? 'https://sars-cov-2-cb.herokuapp.com/' : '/',
   },
