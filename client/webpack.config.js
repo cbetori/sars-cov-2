@@ -10,7 +10,7 @@ const prod = mode === 'production'
 module.exports = {
   entry: './src/index.js',
   mode: 'development',
-  devtool: 'inline-source-map',
+  devtool: prod ? false : 'inline-source-map',
   output: {
     path: __dirname + '/dist',
     filename: '[name].js',
