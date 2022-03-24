@@ -7,6 +7,7 @@ const dotenv = require('dotenv').config({
   path: '../.env',
 }).parsed
 
+console.log(dotenv)
 const mode = process.env.NODE_ENV || 'production'
 const prod = mode === 'production'
 
