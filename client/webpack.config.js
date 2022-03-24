@@ -90,7 +90,9 @@ module.exports = {
       template: './public/index.html',
     }),
     new web.DefinePlugin({
-      API_URL: JSON.stringify(dotenv.API_URL),
+      API_URL: prod
+        ? JSON.stringify(process.env.API_URL)
+        : JSON.stringify(dotenv.API_URL),
     }),
   ],
 }
