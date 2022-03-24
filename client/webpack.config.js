@@ -95,7 +95,7 @@ module.exports = {
       template: './public/index.html',
     }),
     new web.DefinePlugin({
-      API_URL: JSON.stringify('https://sars-cov-2-cb.herokuapp.com/api'),
+      API_URL: JSON.stringify('https://sars-cov-2-cb.herokuapp.com/'),
     }),
   ],
 }
