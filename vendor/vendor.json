@@ -2,10 +2,18 @@
 	"comment": "",
 	"heroku": {
 		"goVersion": "go1.13.1",
-		"install": ["./..."]
+		"install": [
+			"./..."
+		]
 	},
 	"ignore": "",
 	"package": [
+		{
+			"checksumSHA1": "yRed9lTIEpuLSSZQVJzFX8Lba+o=",
+			"path": "github.com/gorilla/handlers",
+			"revision": "3e030244b4ba0480763356fc8ca0ade6222e2da0",
+			"revisionTime": "2020-09-12T19:21:07Z"
+		},
 		{
 			"checksumSHA1": "hHOpK73BJjC7dtbfNfKsceSZi9o=",
 			"path": "github.com/gorilla/mux",

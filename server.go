@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	_ "github.com/joho/godotenv/autoload"
 )
@@ -21,7 +22,9 @@ func main() {
 
 	// Set port/company name from env file
 	port := os.Getenv("PORT")
-
+	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With"})
+	originsOk := handlers.AllowedOrigins([]string{"*"})
+	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
 	r.HandleFunc("/api/start", controller.Start).Methods("GET")
 
 	r.HandleFunc("/api/default", controller.TimedQuery).Methods("GET")
@@ -37,7 +40,7 @@ func main() {
 	//Start Server and Listen
 	fmt.Println("Server Running!")
 	fmt.Println(port)
-	log.Fatal(http.ListenAndServe(":"+port, r))
+	log.Fatal(http.ListenAndServe(":"+port, handlers.CORS(originsOk, headersOk, methodsOk)(r)))
 
 }
 
