@@ -36,6 +36,7 @@ func main() {
 
 	//Start Server and Listen
 	fmt.Println("Server Running!")
+	fmt.Println(port)
 	log.Fatal(http.ListenAndServe(":"+port, r))
 
 }

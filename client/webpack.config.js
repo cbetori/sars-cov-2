@@ -3,10 +3,21 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const deps = require('./package.json').dependencies
 
+const mode = process.env.NODE_ENV || 'development'
+const prod = mode === 'production'
+
 module.exports = {
   entry: './src/index.js',
   mode: 'development',
   devtool: 'inline-source-map',
+  output: {
+    path: __dirname + '/dist',
+    filename: '[name].js',
+    chunkFilename: '[name].[id].js',
+    publicPath: prod
+      ? 'https://sars-cov-2-cb.herokuapp.com/'
+      : 'http://localhost:3002/',
+  },
   resolve: {
     extensions: ['.js', '.tsx', '.json', '.css'],
   },
