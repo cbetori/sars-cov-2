@@ -6,7 +6,7 @@ const deps = require('./package.json').dependencies
 module.exports = {
   entry: './src/index.js',
   mode: 'development',
-  devtool: 'hidden-source-map',
+  devtool: 'inline-source-map',
   resolve: {
     extensions: ['.js', '.tsx', '.json', '.css'],
   },
