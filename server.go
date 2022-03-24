@@ -23,7 +23,7 @@ func main() {
 	// Set port/company name from env file
 	port := os.Getenv("PORT")
 	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With"})
-	originsOk := handlers.AllowedOrigins([]string{"*"})
+	originsOk := handlers.AllowedOrigins([]string{"https://portfolio-host-nu.vercel.app/"})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
 	r.HandleFunc("/api/start", controller.Start).Methods("GET")
 
