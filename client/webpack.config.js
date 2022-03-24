@@ -66,6 +66,12 @@ module.exports = {
     proxy: {
       '/api': 'http://localhost:3002',
     },
+    headers: {
+      'Access-Control-Allow-Origin': 'https://portfolio-host-nu.vercel.app/',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers':
+        'X-Requested-With, content-type, Authorization',
+    },
   },
   plugins: [
     new ModuleFederationPlugin({
