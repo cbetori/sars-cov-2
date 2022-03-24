@@ -7,8 +7,7 @@
     "build-server": "cd vendor && go build server.go",
     "move-server": "mv vendor/server bin/server",
     "dev-build": "concurrently - kill-others \"npm run build-server \" \"npm run build-client\"",
-    "install": "cd client && npm i",
-    "heroku-prebuild": "cd client && npm install --dev",
+    "install": "cd client && npm i && npm i --dev",
     "postinstall": "npm run build-client"
   }
 }
