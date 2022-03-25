@@ -20,14 +20,18 @@ func main() {
 
 	// Set port/company name from env file
 	port := os.Getenv("PORT")
-	HOST_ORIGIN := os.Getenv("HOST_ORIGIN")
+	portfolio_host := "https://portfolio-host-nu.vercel.app/"
+
 	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With"})
-	originsOk := handlers.AllowedOrigins([]string{string(HOST_ORIGIN)})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
+	originsOk := handlers.AllowedOrigins([]string{portfolio_host})
+
+	if os.Getenv("NODE_ENV") == "development" {
+		originsOk = handlers.AllowedOrigins([]string{"*"})
+	}
+
 	r.HandleFunc("/api/start", controller.Start).Methods("GET")
-
 	r.HandleFunc("/api/default", controller.TimedQuery).Methods("GET")
-
 	r.HandleFunc("/api/default/data={date}", controller.HandleDefaultQuery).Methods("GET")
 
 	spa := spaHandler{staticPath: "client/dist", indexPath: "index.html"}
@@ -37,8 +41,7 @@ func main() {
 	go timer()
 
 	//Start Server and Listen
-	fmt.Println("Server Running!")
-	fmt.Println(string(HOST_ORIGIN))
+	fmt.Println("Server Running On Port:", port)
 	log.Fatal(http.ListenAndServe(":"+port, handlers.CORS(originsOk, headersOk, methodsOk)(r)))
 
 }

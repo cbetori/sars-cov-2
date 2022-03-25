@@ -7,7 +7,7 @@ const dotenv = require('dotenv').config({
   path: '../.env',
 }).parsed
 
-const mode = process.env.NODE_ENV || 'production'
+const mode = process.env.NODE_ENV || 'development'
 const prod = mode === 'production'
 
 module.exports = {
@@ -18,7 +18,9 @@ module.exports = {
     path: __dirname + '/dist',
     filename: 'index.js',
     chunkFilename: '[name].[id].js',
-    publicPath: prod ? 'https://sars-cov-2-cb.herokuapp.com/' : '/',
+    publicPath: prod
+      ? 'https://sars-cov-2-cb.herokuapp.com/'
+      : 'http://localhost:3002/',
   },
   resolve: {
     extensions: ['.js', '.tsx', '.json', '.css'],
@@ -65,7 +67,7 @@ module.exports = {
     ],
   },
   devServer: {
-    port: 3003,
+    port: 3002,
   },
   plugins: [
     new ModuleFederationPlugin({
