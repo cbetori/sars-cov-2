@@ -1,7 +1,8 @@
 {
   "scripts": {
     "client": "cd client && npm start",
-    "server": "cd vendor && fresh",
+    "server": "go run server.go",
+    "server-fresh": "cd vendor && fresh",
     "dev": "concurrently - kill-others \"npm run server \" \"npm run client\"",
     "build-client": "cd client && npm run build",
     "build-server": "cd vendor && go build server.go",

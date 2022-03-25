@@ -20,7 +20,7 @@ func main() {
 
 	// Set port/company name from env file
 	port := os.Getenv("PORT")
-	portfolio_host := "https://portfolio-host-nu.vercel.app/"
+	portfolio_host := "https://portfolio-host-nu.vercel.app"
 
 	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With"})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
