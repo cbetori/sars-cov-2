@@ -14,8 +14,6 @@ import (
 	_ "github.com/joho/godotenv/autoload"
 )
 
-var number int
-
 func main() {
 	// Init Router
 	r := mux.NewRouter()
@@ -24,7 +22,7 @@ func main() {
 	port := os.Getenv("PORT")
 	HOST_ORIGIN := os.Getenv("HOST_ORIGIN")
 	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With"})
-	originsOk := handlers.AllowedOrigins([]string{HOST_ORIGIN})
+	originsOk := handlers.AllowedOrigins([]string{string(HOST_ORIGIN)})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
 	r.HandleFunc("/api/start", controller.Start).Methods("GET")
 
@@ -40,6 +38,7 @@ func main() {
 
 	//Start Server and Listen
 	fmt.Println("Server Running!")
+	fmt.Println(string(HOST_ORIGIN))
 	log.Fatal(http.ListenAndServe(":"+port, handlers.CORS(originsOk, headersOk, methodsOk)(r)))
 
 }
