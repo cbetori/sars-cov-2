@@ -1,86 +1,86 @@
 html {
-	overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 body {
-	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-		sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	--scrolltrack: white;
-	--border-color: #f0f0f0;
-	overflow-x: hidden;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --scrolltrack: white;
+  --border-color: #f0f0f0;
+  overflow-x: hidden;
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-		monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
-#disclaimer {
-	width: 100%;
-	background-color: rgb(250, 222, 60, 0.9);
-	font-weight: 600;
-	font-size: 1.5vmin;
+#disclaimer-covid {
+  width: 100%;
+  background-color: rgb(250, 222, 60, 0.9);
+  font-weight: 600;
+  font-size: 1.5vmin;
 }
 
-#disclaimer-detail {
-	margin-left: 10px;
+#disclaimer-detail-covid {
+  margin-left: 10px;
 }
 
-#disclaimer-links {
-	display: flex;
+#disclaimer-links-covid {
+  display: flex;
 }
 
-#disclaimer-authoritative {
-	display: flex;
+#disclaimer-authoritative-covid {
+  display: flex;
 }
 
-.disclaimer-link-head {
-	margin-left: 10px;
+.disclaimer-link-head-covid {
+  margin-left: 10px;
 }
 
-.disclaimer-links-address {
-	margin-left: 5px;
-	color: inherit;
-	text-decoration: underline;
+.disclaimer-links-address-covid {
+  margin-left: 5px;
+  color: inherit;
+  text-decoration: underline;
 }
 
-#options {
-	font-size: 1.1vmin;
-	width: 100%;
-	height: 100px;
-	display: inline-flex;
-	position: sticky;
-	top: 0;
-	justify-content: space-around;
-	flex-wrap: wrap;
-	align-items: center;
+#options-covid {
+  font-size: 1.1vmin;
+  width: 100%;
+  height: 100px;
+  display: inline-flex;
+  position: sticky;
+  top: 0;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
 
-	z-index: 10;
-	background-color: var(--scrolltrack);
+  z-index: 10;
+  background-color: var(--scrolltrack);
 }
 
-#options-theme {
-	display: inline-flex;
-	flex-direction: column;
+#options-theme-covid {
+  display: inline-flex;
+  flex-direction: column;
 }
 
-.options-inputs {
-	width: 200px;
+.options-inputs-covid {
+  width: 200px;
 }
 
-#summary {
-	display: flex;
-	justify-content: center;
+#summary-covid {
+  display: flex;
+  justify-content: center;
 }
 
-#summary-card {
-	width: 75%;
-	display: flex;
-	justify-content: center;
+#summary-card-covid {
+  width: 75%;
+  display: flex;
+  justify-content: center;
 }
 
 /* Ant-Card styling for totals summary */
@@ -88,95 +88,97 @@ code {
 	font-size: 100%;
 } */
 
-.ant-statistic-title {
-	/* font-size: 1.7vmin; */
+.ant-statistic-title-covid {
+  /* font-size: 1.7vmin; */
 }
 
-#tables {
-	width: 85%;
-	margin-left: auto;
-	margin-right: auto;
+#tables-covid {
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: auto;
+  height: 100%;
 }
 
-.tables-header {
-	font-size: 20px;
-	font-weight: bold;
-	margin-bottom: 10px;
-	border: 1px solid var(--border-color);
+.tables-header-covid {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border: 1px solid var(--border-color);
 }
 
-.tables-individual {
-	height: auto;
-	margin-top: 20px;
-	background-color: var(--scrolltrack);
-	border: 1px solid var(--border-color);
-	margin-bottom: 20px;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 10px;
-	border-radius: 3px;
+.tables-individual-covid {
+  height: auto;
+  margin-top: 20px;
+  background-color: var(--scrolltrack);
+  border: 1px solid var(--border-color);
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  border-radius: 3px;
 }
 
 .ReactVirtualized__Grid::-webkit-scrollbar,
 .ReactVirtualized__Table__Grid::-webkit-scrollbar,
 .ReactVirtualized__Table__row::-webkit-scrollbar {
-	background-color: var(--scrolltrack);
+  background-color: var(--scrolltrack);
 }
 
 .ReactVirtualized__Grid::-webkit-scrollbar-thumb,
 .ReactVirtualized__Table__Grid::-webkit-scrollbar-thumb,
 .ReactVirtualized__Table__row::-webkit-scrollbar-thumb {
-	background-color: grey;
+  background-color: grey;
 }
 
 .ReactVirtualized__Table__row,
 .ReactVirtualized__Table__row {
-	width: 100% !important;
-	justify-content: space-evenly;
+  width: 100% !important;
+  justify-content: space-evenly;
 }
 .ReactVirtualized__Grid__innerScrollContainer,
 .ReactVirtualized__Grid,
 .ReactVirtualized__Table__Grid,
 .ReactVirtualized__Table__headerRow {
-	width: inherit !important;
-	max-width: inherit !important;
+  width: inherit !important;
+  max-width: inherit !important;
 }
 
 .ReactVirtualized__Table__headerRow {
-	padding-right: 25px !important;
+  padding-right: 25px !important;
 }
 
 .ReactVirtualized__Table,
 .ReactVirtualized__Grid {
-	max-height: 500px !important;
+  max-height: 500px !important;
 }
 
 .ReactVirtualized__Table__Grid {
-	max-height: 440px !important;
-	min-height: 30px !important;
+  max-height: 440px !important;
+  min-height: 30px !important;
 }
 
 .ReactVirtualized__Table__headerColumn {
-	display: flex;
-	align-items: center;
-	height: 40px;
-	font-size: 1.7vmin;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  font-size: 1.7vmin;
 }
 
 .ReactVirtualized__Table__headerRow {
-	border: 1px solid var(--border-color);
-	margin-bottom: 10px;
-	border-radius: 3px;
-	justify-content: space-evenly;
+  border: 1px solid var(--border-color);
+  margin-bottom: 10px;
+  border-radius: 3px;
+  justify-content: space-evenly;
 }
 .ReactVirtualized__Table__headerTruncatedText {
-	overflow: auto !important;
-	overflow-wrap: break-word !important;
-	word-wrap: break-word !important;
-	white-space: pre-line !important;
+  overflow: auto !important;
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+  white-space: pre-line !important;
 }
 
 .ReactVirtualized__Table__rowColumn {
-	height: inherit;
-	font-size: 1.7vmin;
+  height: inherit;
+  font-size: 1.7vmin;
 }
